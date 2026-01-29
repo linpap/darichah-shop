@@ -22,12 +22,13 @@ const builder = client ? imageUrlBuilder(client) : null
 
 export function urlFor(source: SanityImageSource) {
   if (!builder || !source) {
-    // Return a placeholder image URL builder-like object
-    return {
-      width: () => ({ height: () => ({ url: () => '' }) }),
-      height: () => ({ url: () => '' }),
+    // Return a placeholder image URL builder-like object that supports chaining
+    const placeholder: any = {
+      width: () => placeholder,
+      height: () => placeholder,
       url: () => '',
     }
+    return placeholder
   }
   return builder.image(source)
 }
