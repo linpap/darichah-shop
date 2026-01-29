@@ -57,7 +57,7 @@ export default async function JournalPage() {
     tags: ['blogPost'],
   }).catch(() => [])
 
-  const displayPosts = (posts as any[]).length > 0 ? posts : placeholderPosts
+  const displayPosts: any[] = (posts as any[]).length > 0 ? (posts as any[]) : placeholderPosts
 
   return (
     <div className="bg-warm-cream min-h-screen">
