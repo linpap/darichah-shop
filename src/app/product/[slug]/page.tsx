@@ -56,11 +56,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
   // Fetch related products from same category
   let relatedProducts: any[] = []
   if (p.category?.slug?.current) {
-    relatedProducts = await sanityFetch({
+    relatedProducts = (await sanityFetch({
       query: productsByCategoryQuery,
       params: { category: p.category.slug.current },
       tags: ['product'],
-    }).catch(() => [])
+    }).catch(() => [])) as any[]
     // Filter out current product and limit to 4
     relatedProducts = (relatedProducts as any[])
       .filter((rp) => rp._id !== p._id)
